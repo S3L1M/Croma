@@ -2,7 +2,7 @@
 
 import socket, threading
 
-x = []
+x = ['0']
 IP = '127.0.0.1'
 BUFFER_SIZE = 1024
 
@@ -23,3 +23,4 @@ def send(data):
 
 x[0] = int(x[0]) + 1
 send(x)
+
