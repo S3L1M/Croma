@@ -13,7 +13,7 @@ class transceiver:
           self.data, addr = self.rec.recvfrom(self.BUFFER_SIZE)
 
   def listen(self):
-    threading.Thread(target=self.eventlistener).start()
+    threading.Thread(target=self.eventListener).start()
 
   def getData(self):
     return self.data.decode()
