@@ -29,13 +29,14 @@ class transceiver:
       
       
 class stream (transceiver):
-  def __init__(self, ip_a, ip_b, buffer_size):
-    self.IP = ip_a
-    self.IP2 = ip_b
+  def __init__(self, ip_from, ip_to, buffer_size):
+    self.IP_A = ip_from
+    self.IP_B = ip_to
     self.BUFFER_SIZE = buffer_size
     self.init()
   
   def eventListener(self):
     while True:
       self.data, addr = self.rec.recvfrom(self.BUFFER_SIZE)
+      # Send data to front end
       
