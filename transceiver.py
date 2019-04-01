@@ -7,13 +7,15 @@ class Emitter:
     self.IP2 = ip_to
     self.BUFFER_SIZE = buffer_size
     self.snd = self.rec = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
-    self.rec.bind((self.IP1, 5005))
+    self.rec.bind(('0.0.0.0', 5005))
+    self.data = bin(0)
 
   def eventListener(self):
       while True:
           self.data, addr = self.rec.recvfrom(self.BUFFER_SIZE)
-          # Send data to frontend
-          self.send(self.getData())
+          if addr[0]==self.IP1:
+            # Send data to frontend
+            self.send(self.getData())
 
   def listen(self):
     threading.Thread(target=self.eventListener).start()
