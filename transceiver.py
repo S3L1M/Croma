@@ -20,6 +20,7 @@ class Receiver (UDP):
     UDP.__init__(self, port)
     self.BUFFER_SIZE = buffer_size
     self.sock.bind(('0.0.0.0', self.PORT))
+    self.data = 'undefined'
   
   def eventListener(self):
     while True:
@@ -33,6 +34,13 @@ class Receiver (UDP):
   
   def getDataBinary(self):
     return self.data
+
+
+class Transceiver (Sender, Receiver):
+  def __init__(self, target_ip, target_port, port, buffer_size):
+    Sender.__init__(self, target_ip, target_port)
+    Receiver.__init__(self, port, buffer_size)
+    
 
 
 class Emitter:
