@@ -55,7 +55,7 @@ class Emitter (Transceiver):
   
   def eventListener(self):
     while True:
-      self.data, addr = self.rec.recvfrom(self.BUFFER_SIZE)
+      self.data, addr = self.sock.recvfrom(self.BUFFER_SIZE)
       if addr[0]==self.rIP:
         if self.onReceive: self.onReceive()
         self.send(self.getData())  
@@ -73,4 +73,5 @@ class Connection (Transceiver):
 
 class Stream (Emitter):
   def __init__(self, source, sPort, destination, event):
-    Emitter.__init__(source, destination[0], sPort, destination[1], CROMA_BUFFER_SIZE, onReceive=event)
+    Emitter.__init__(self, source, destination[0], sPort, destination[1], CROMA_BUFFER_SIZE, onReceive=event)
+    self.listen()
