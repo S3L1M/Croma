@@ -11,10 +11,6 @@ lst = []
 def main():
   return render_template('index.html')
 
-#@app.route('/states')
-#def getState():
-#  return x.getData()
-
 @app.route('/add', methods=['POST'])
 def addStream():
   req = dict(request.args)
