@@ -25,7 +25,7 @@ class Receiver (UDP):
     self.rPORT = port
     self.BUFFER_SIZE = buffer_size
     self.sock.bind(('0.0.0.0', self.rPORT))
-    self.data = 'undefined'
+    self.data = str.encode('undefined')
   
   def eventListener(self):
     while True:
